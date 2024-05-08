@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>WebRTC host</title>
+    <title>OBS GetUserMedia</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
 </head>
@@ -13,13 +13,74 @@
 </style>
 
 <body>
+    <nav class="toc">
+        <ul>
+            <li><a href="#Intro">Media for OBS</a></li>
+            <li>
+                <a href="#srvr">Connections</a>
+                <ul>
+                    <li><a href="#srvr-obs-ws">OBS WebSocket Server</a></li>
+                    <li><a href="#srvr-webRTC">webRTC Source</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#mp">MediaPipe</a>
+                <ul>
+                    <li><a href="#mp-pose-detect">Pose Detection</a></li>
+                    <li><a href="#mp-sentiment-analysis">Text Sentiment</a></li>
+                </ul>
+            </li>
+            <li>
+            <li>
+                <a href="#audio">Audio</a>
+                <ul>
+                    <li><a href="#audio-fft-analysis">Audio Frequency</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#input">Input</a>
+                <ul>
+                    <li><a href="#input-midi-devices">Midi</a></li>
+                    <li><a href="#input-gamepad-controller">Gamepad</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+            <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000"
+                stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+        </svg>
+    </nav>
+
     <article class="contents">
         <h2>Choose the media (Video, Audio, Midi or Gamepad) to send to the OBS Browser</h2>
-        <section id="AV-webRTC">
 
+        <section>
+            <div id="srvr">
+                <div id="srvr-obs-ws">
+                    <h3>Connect to the OBS WebSocket Server</h3>
+                    <p><label for="IP">Enter IP address or "localhost":</label>
+                        <input type="text" id="IP" name="IP" value="localhost" /><br>
+                        <label for="Port">Enter Port Number:</label>
+                        <input type="text" id="Port" name="Port" value="4455" /><br>
+                        <label for="PW">Enter Password:</label>
+                        <input type="password" id="PW" name="PW" value="EfTC8xml3070cx3A" /></br>
+                        <input type="button" id="WSconnectButton" value="Connect to OBS" />
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
             <div>
+                <div id="srvr-webRTC"></div>
+                <h3>Send Audio and/or Video to a target OBS Browser source via webRTC</h3>
                 <form>
-
+                    
+                    <label for="pcName">Enter the name of peerConnections</label>
+                    <input type="text" id="pcName" value="ID" size="10"/><br>
                     <input type="checkbox" id="videoButton">
                     <label for="videoButton">Desktop Window (Video)</label>
                     <br>
@@ -27,6 +88,7 @@
                     <label for="audioButton">Microphone (Choose Microphone in Chrome Settings:
                         chrome://settings/content/microphone)</label>
                 </form>
+            </div>
             </div>
             <div id="selectAudio"></div>
             <div id="intro-container">
@@ -43,13 +105,15 @@
                 <input type="button" id="rtcButton" value="Start" />
             </div>
         </section>
-        <section id="midi">
+
+        <section>
             <div id="input-midi-devices">
                 <h3>Midi</h3>
                 <p id="midi"></p>
                 <p id="midiData"></p>
             </div>
         </section>
+
         <section id="gamepad">
 
             <h3>Gamepad</h3>
@@ -59,7 +123,6 @@
         </section>
     </article>
 
-    <script src='../websocketDetails.js'></script>
     <script src='lib/obs-ws.js'></script>
     <script src='lib/obsConnect.js'></script>
     <script src='lib/rtc-source.js'></script>
