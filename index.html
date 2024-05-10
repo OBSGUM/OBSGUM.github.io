@@ -8,10 +8,6 @@
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
 </head>
 <link href="lib/style.css" rel="stylesheet" type="text/css" />
-<style>
-
-</style>
-
 <body>
     <nav class="toc">
         <ul>
@@ -47,10 +43,7 @@
 
 
         </ul>
-        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-            <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000"
-                stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
-        </svg>
+
     </nav>
 
     <article class="contents">
@@ -60,13 +53,28 @@
             <div id="srvr">
                 <div id="srvr-obs-ws">
                     <h3>Connect to the OBS WebSocket Server</h3>
-                    <p><label for="IP">Enter IP address or "localhost":</label>
-                        <input type="text" id="IP" name="IP" value="localhost" /><br>
-                        <label for="Port">Enter Port Number:</label>
-                        <input type="text" id="Port" name="Port" value="4455" /><br>
-                        <label for="PW">Enter Password:</label>
-                        <input type="password" id="PW" name="PW" value="EfTC8xml3070cx3A" /></br>
-                        <input type="button" id="WSconnectButton" value="Connect to OBS" />
+                    <form class="form-grid">
+                            <label for="IP">Enter IP address or "localhost":</label>
+                            <input type="text" id="IP" name="IP" value="localhost" />
+                            <label for="Port">Enter Port Number:</label>
+                            <input type="text" id="Port" name="Port" value="4455" />
+                            <label for="PW">Enter Password:</label>
+                            <input type="password" id="PW" name="PW" value="EfTC8xml3070cx3A" />
+                            <input class="form-button" type="button" id="WSconnectButton" value="Connect to OBS" />
+                        </form>
+                
+                </div>
+                <div>
+                    <h3>Choose an Audio and/or Video Source</h3>
+                    <p>
+                        <input type="checkbox" id="videoButton">
+                        <label for="videoButton">Desktop Window (Video)</label>
+                        <br>
+                        <input type="checkbox" id="audioButton">
+                        <label for="audioButton">Microphone (Choose Microphone in Chrome Settings:
+                            chrome://settings/content/microphone)</label><br>
+                        <input class="form-button" type="button" id="captureSource" value="Check Audio/Video" />
+                        <video id="videoStream"></video>
                     </p>
                 </div>
             </div>
@@ -77,33 +85,20 @@
             <div>
                 <div id="srvr-webRTC"></div>
                 <h3>Send Audio and/or Video to a target OBS Browser source via webRTC</h3>
-                <form>
+                <div id="selectAudio"></div>
+                <div id="intro-container">
+                    <p id="clientInfo"></p>
+                
+                    <form class="form-grid">
                     
                     <label for="pcName">Enter the name of peerConnections</label>
-                    <input type="text" id="pcName" value="ID" size="10"/><br>
-                    <input type="checkbox" id="videoButton">
-                    <label for="videoButton">Desktop Window (Video)</label>
-                    <br>
-                    <input type="checkbox" id="audioButton">
-                    <label for="audioButton">Microphone (Choose Microphone in Chrome Settings:
-                        chrome://settings/content/microphone)</label>
-                </form>
-            </div>
-            </div>
-            <div id="selectAudio"></div>
-            <div id="intro-container">
-                <p id="clientInfo"></p>
-
-            </div>
-
-            <!-- <div id="videos">
-                <video class="video-player" id="user-1" ></video>
-            </div> -->
-            <div>
-                <label for="pcNumber">Enter the number of peerConnections</label>
-                <input type="number" id="pcNumber" value=1 maxlength="2" size="10" />
-                <input type="button" id="rtcButton" value="Start" />
-            </div>
+                    <input type="text" id="pcName" value="ID" size="10"/>                
+            
+                    <label for="pcNumber">Enter the number of peerConnections</label>
+                    <input type="number" id="pcNumber" value=1 maxlength="2" size="10" />
+                    <input class="form-button" type="button" id="rtcButton" value="Start webRTC" />
+                    
+            </form>
         </section>
 
         <section>
@@ -114,22 +109,27 @@
             </div>
         </section>
 
-        <section id="gamepad">
-
-            <h3>Gamepad</h3>
-            <p>https://github.com/luser/gamepadtest</p>
-            <h4 id="startGP">Press a button on your controller to start</h2>
-                <div id="gpData"></div>
+        <section>
+            <div id="input-gamepad-controller">
+                <h3>
+                <!-- <input type="checkbox" id="gamepad-load"/> -->
+                        Gamepad</h3>
+                <div id="gamepad-display" style="display:inline;">
+                    <p>https://github.com/luser/gamepadtest</p>
+                    <h4 id="startGP">Press a button on your controller to start</h2>
+                        <div id="gpData"></div>
+                    </div>
+                </div>
         </section>
     </article>
 
     <script src='lib/obs-ws.js'></script>
     <script src='lib/obsConnect.js'></script>
+    <script src='lib/getAV.js'></script>
     <script src='lib/rtc-source.js'></script>
     <script src="lib/webmidi.js"></script>
     <script src="lib/webmidi-Module.js"></script>
     <script src="lib/gamepadtest.js"></script>
 
 </body>
-
 </html>

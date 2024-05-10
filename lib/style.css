@@ -16,6 +16,20 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.form-grid {
+  display:grid;
+  grid-template-columns: 350px 150px;
+  
+}
+
+.form-button {
+  cursor: pointer;
+}
+
+.rtcRefresh{
+  margin-left: 100px;
+}
+
 .toc {
   position: fixed;
   left: 3em;
@@ -161,6 +175,7 @@ body {
   background-size: 0% 0%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  
 }
 
 .pressed {
