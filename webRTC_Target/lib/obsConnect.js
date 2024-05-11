@@ -1,6 +1,15 @@
 const obs = new OBSWebSocket();
 
-async function connectOBS(websocketIP,websocketPort,websocketPassword) {
+//connect to OBS wss
+window.addEventListener(`ws-details`, async function (event) {
+  console.log("message received: ", event)
+  
+  //event wss details
+  const websocketIP = event.detail.wssDetails.IP;
+  const websocketPort = event.detail.wssDetails.PORT;
+  const websocketPassword = event.detail.wssDetails.PW;
+
+//async function connectOBS(websocketIP,websocketPort,websocketPassword) {
 // const websocketIP = wssDetails.IP
 // const websocketPort = wssDetails.PORT
 // const websocketPassword = wssDetails.PW
@@ -24,3 +33,4 @@ async function connectOBS(websocketIP,websocketPort,websocketPassword) {
  console.log(`ws://${websocketIP}:${websocketPort}`)
  return obs;
 }
+)

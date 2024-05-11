@@ -16,6 +16,11 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.contents canvas {
+  clear: both;
+  display: block;
+}
+
 .form-grid {
   display:grid;
   grid-template-columns: 350px 150px;
@@ -24,6 +29,15 @@ body {
 
 .form-button {
   cursor: pointer;
+}
+
+.contents .form-small-button {
+  font-size: 12px;
+  width: 100px;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+  border-radius: 50px;
+  border: transparent;
 }
 
 .rtcRefresh{
