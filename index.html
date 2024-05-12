@@ -189,6 +189,35 @@ OBS browsers" />
                     </div>
                 </div>
             </div>
+           
+            <div>
+                <h3>MediaPipe Text Classification</h3>
+                <div id="mp-sentiment-analysis">
+                    <input type="button" class="form-button" id="startTextAnalysis" value="Start Text Analysis" />
+                    <h1>Classifying text with the MediaPipe Text Classifier Task</h1>
+                    <p>This demo listens for event {speechToText}, then runs sentiment analysis. The result shows how likely the input text is to have a
+                      positive or negative sentiment.
+                  
+                      <section id="demos" class="invisible">
+                        <p><b>Input:
+                        </b>
+                      </p>
+                      <label>
+                        <span ></span>
+                        <span >
+                  
+                          <textarea id="input" rows="8" cols="40" aria-label="Text Input"></textarea>
+                        </span>
+                        <span></span>
+                      </label></br>
+                      <button id="submit">
+                        <span>CLASSIFY</span>
+                      </button></br>
+                  
+                      <p><b>Sentiment:</b></p>
+                      <p id="output"></p>
+                </div>
+            </div>
         </section>
     </article>
 
