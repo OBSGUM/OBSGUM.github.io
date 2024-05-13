@@ -42,6 +42,7 @@
                         <li><a href="#mp-face-detect">Face Landmark<br>Detection</a></li>
                         <li><a href="#mp-segmentation-detect">Image Segmentation</a></li>
                         <li><a href="#mp-sentiment-analysis">Text Sentiment</a></li>
+                        <li><a href="#mp-gemma">Gemma<br>LLM Inference</a></li>
                     </ul>
                 </li>
             </ul>
@@ -193,7 +194,7 @@ OBS browsers" />
             <div>
                 <h3>MediaPipe Text Classification</h3>
                 <div id="mp-sentiment-analysis">
-                    <input type="button" class="form-button" id="startTextAnalysis" value="Start Text Analysis" />
+                    <input type="button" class="form-button" id="startTextAnalysis" value="Start Gemma" />
                     <h1>Classifying text with the MediaPipe Text Classifier Task</h1>
                     <p>This demo listens for event {speechToText}, then runs sentiment analysis. The result shows how likely the input text is to have a
                       positive or negative sentiment.
@@ -218,6 +219,31 @@ OBS browsers" />
                       <p id="output"></p>
                 </div>
             </div>
+            
+            <div>
+                <h1>MediaPipe Gemma LLM Inference</h1>
+                <div id="mp-gemma">
+                    <input type="button" class="form-button" id="startLLM" value="Start Text Analysis" />
+                    <h4>Text-to-Text large language model </h4>
+                    <p>Gemma 2B is a part of a family of lightweight, state-of-the-art open models built from the same research and technology used to create the Gemini models. The model contains 2B parameters and open weights. This model is well-suited for a variety of text generation tasks, including question answering, summarization, and reasoning.
+
+                      <a href="https://developers.google.com/mediapipe/solutions/genai/llm_inference">https://developers.google.com/mediapipe/solutions/genai/llm_inference</a>
+                      <br>
+                      <a href="https://ai.google.dev/gemma/docs/formatting">Gemma formatting and system instructions</a>
+<br>
+                  
+                      Input:<br />
+                      example format<br />
+                      <code>&lt;start_of_turn&gt;user<br />
+                        Some question?&lt;end_of_turn&gt;<br />
+                        &lt;start_of_turn&gt;model</code><br />
+    <textarea id="gemmaInput" style="height: 300px; width: 600px"></textarea><br />
+    <input type="button" id="gemmaSubmit" value="Get Response" disabled /><br />
+    <br />
+    Result:<br />
+    <textarea id="gemmaOutput" style="height: 300px; width: 600px"></textarea>
+                </div>
+            </div>
         </section>
     </article>
 
@@ -231,10 +257,6 @@ OBS browsers" />
     <script src="lib/audioInput-renderer.js"></script>
     <script src="lib/SpeechRecognition.js"></script>
     <script src="lib/loadScripts.js"></script>
-    <!-- <script src="lib/mpsegmentation.js" type="module"></script> -->
-    <!-- <script src="lib/rtc-segmentation.js"></script> -->
-
-
 
 
 </body>
